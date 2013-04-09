@@ -208,3 +208,33 @@ h2 a:visited,
 #title a {
 	text-decoration: none;
 }
+
+/*
+06 Headings
+---------------------------------------------------------------------------------------------------- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.entry-title a {
+	line-height: 1.2;
+	margin-bottom: 16px;
+	margin-bottom: 1rem;
+}
+
+.author-box h1 {
+	margin: 0
+}
+
+.taxonomy-description h1 {
+	margin-bottom: 4px;
+	margin-bottom: 0.25rem;
+}
+
+.archive-title {
+	margin-bottom: 24px;
+	margin-bottom: 1.5rem;
+}

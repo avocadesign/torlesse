@@ -1,0 +1,43 @@
+#header {
+	border-bottom: 2px solid #1e1e1e;
+	min-height: 120px;
+	overflow: hidden;
+	padding-bottom: 32px;
+	padding-bottom: 2rem;
+}
+
+#title {
+	line-height: 1;
+	margin: 40px 0 8px;
+	margin: 2.5rem 0 0.5rem;
+}
+
+.header-image #title {
+	margin: 0;
+}
+
+#description {
+	line-height: 1.25;
+}
+
+.header-full-width #title,
+.header-full-width #title a,
+.header-full-width #title-area {
+	width: 100%;
+}
+
+.header-image #title,
+.header-image #title a,
+.header-image #title-area {
+	display: block;
+	float: left;
+	min-height: 120px;
+	overflow: hidden;
+	text-indent: -9999px;
+	width: 50%;
+}
+
+.header-image #description {
+	display: block;
+	overflow: hidden;
+}
