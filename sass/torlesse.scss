@@ -3,14 +3,26 @@
 
 //Compass extenstions (required in congif.rb)
 //SUSY Grid
-//Breakpoint compass extenstions are 
+//Breakpoint compass 
 @import "normalize";
 
 // Import Compass
-@import 'compass';
+@import "compass";
+@import "compass/css3";
+@import "compass/typography";
+@import "compass/utilities";
+
+@import "susy";
+@import "breakpoint";
 
 // Import Theme partials and settings
-@import 'settings';
+@import "settings";
+@import "colors";
+@import "genesis-style";
+@import "layout";
+@import "typography";
+@import "nav";
+
 
 // Import theme specific styles last
 @import 'theme-style';
