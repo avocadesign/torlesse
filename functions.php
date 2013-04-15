@@ -23,3 +23,19 @@ add_theme_support( 'genesis-custom-header', array(
 
 // Add support for 3-column footer widgets
 add_theme_support( 'genesis-footer-widgets', 3 );
+
+//Enqueue the stylesheet
+function torlesse_theme_styles()  
+{ 
+  // Register the style like this for a theme:  
+  // (First the unique name for the style (custom-style) then the src, 
+  // then dependencies and ver no. and media type)
+  wp_register_style( 'torlesse-main', 
+    get_stylesheet_directory_uri() . '/css/torlesse.css', 
+    array()
+    );
+
+  // enqueing:
+  wp_enqueue_style( 'torlesse-main' );
+}
+add_action('wp_enqueue_scripts', 'torlesse_theme_styles');
