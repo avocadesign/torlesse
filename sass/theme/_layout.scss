@@ -7,15 +7,20 @@ $grid-padding   : $gutter-width;
 $break-portrait-tablet: 9;
 $break-screen: 12;
 
+// Set up the grid in #wrap and setup breakpoints for responsive design
 #wrap {
 	@include container;
-	//@include susy-grid-background;
+	//@include susy-grid-background; //uncomment to see grid for mobile
+	
+	  @include at-breakpoint($break-portrait-tablet) {
+	    @include set-container-width;
+	    //@include susy-grid-background; //uncomment to see grid for tablet
+	  }
+	  
 	  @include at-breakpoint($break-screen) {
 	    @include set-container-width;
-	    //@include susy-grid-background;
-	    
+	    //@include susy-grid-background; //uncomment to see grid for screen
 	  }
-	
 }
 
 // Layout for $break-portrait tablet (9 Columns)
@@ -145,12 +150,6 @@ $break-screen: 12;
 		@include omega;
 	}
 }
-
-
-
-
-
-
 
 #inner {
 	clear: both;
