@@ -4,34 +4,35 @@
 //Compass extenstions (required in congif.rb)
 //SUSY Grid
 //Breakpoint compass 
-@import "base/normalize";
+@import "lib/lib-all";
+@import 'theme/colors';
 
 // Import Compass
 @import "compass";
 @import "compass/css3";
 @import "compass/typography";
 @import "compass/utilities";
-
+//Import Compass extensions
 @import "susy";
 @import "breakpoint";
 
 // Import Theme partials and settings
-@import "theme/settings";
-@import "theme/colors";
-@import "theme/layout";
-@import "theme/typography";
-@import "theme/lists";
-@import "theme/images";
-@import "theme/forms-buttons";
-@import "theme/header";
-@import "theme/nav";
-@import "theme/post-meta-and-nav";
-@import "theme/footer";
-@import "theme/comments";
-@import "theme/widgets-and-sidebars";
+@import "base/settings";
+@import "base/layout";
+@import "base/typography";
+@import "base/lists";
+@import "base/images";
+@import "base/forms-buttons";
+@import "base/header";
+@import "base/nav";
+@import "base/post-meta-and-nav";
+@import "base/footer";
+@import "base/comments";
+@import "base/widgets-and-sidebars";
 
-
-
-
-// Import theme specific styles last
-@import 'custom-theme-style';
+/**  
+  * Import theme specific styles last
+  * Check the theme-style.scss file to see what partials are being imported
+*/ 
+		
+@import 'theme/theme-style';

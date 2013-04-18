@@ -29,6 +29,21 @@
 
 /* 03a - Font Color ----------- */
 
+html, 
+body,
+p {
+	color: $default-text-color;
+}
+
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6 {
+	color: $heading-color;
+}
+
 a:hover,
 body,
 h2 a,
@@ -44,7 +59,7 @@ input,
 .post-comments,
 #title a,
 #title a:hover {
-	color: $link;
+	color: $link-color;
 }
 
 a,
@@ -53,7 +68,7 @@ h2 a:hover,
 .genesis-nav-menu li:hover a,
 .genesis-nav-menu li li a:hover,
 .genesis-nav-menu .current-menu-item a {
-	color: $link-hover;
+	color: $link-hover-color;
 }
 
 .post-info,
@@ -238,3 +253,12 @@ h6,
 	margin-bottom: 24px;
 	margin-bottom: 1.5rem;
 }
+
+@media only screen and (max-width: 480px) {
+
+	html {
+		font-size: 87.5%; /* 14px base */
+	}
+
+}
+

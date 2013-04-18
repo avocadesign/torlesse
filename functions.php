@@ -40,7 +40,7 @@ function torlesse_theme_styles()
 }
 add_action('wp_enqueue_scripts', 'torlesse_theme_styles');
 
-/** Customize the site credits */
+// Customize the site credits
 add_filter( 'genesis_footer_creds_text', 'torlesse_footer_creds_text' );
 function torlesse_footer_creds_text() {
 	$torlesse_developer_link_alt = 'Website Design, WordPress web development and hosting, Genesis framework';
@@ -52,7 +52,7 @@ function torlesse_footer_creds_text() {
     echo date('Y');
     echo '</p></div>'; // End .site-copyright
     echo '<div class="website-designed-by"><p>'; // Display the Developer credits in a div.website-designed-by
-    echo ' Website Designed by <strong><a href="' . CHILD_THEME_URL . '" class="website-designed-by-link" alt="' . $torlesse_developer_link_alt . '" title="' . $torlesse_developer_link_alt . '">' . CHILD_THEME_NAME . '</a></strong>';
+    echo ' Website designed by <strong><a href="' . CHILD_THEME_URL . '" class="website-designed-by-link" alt="' . $torlesse_developer_link_alt . '" title="' . $torlesse_developer_link_alt . '">' . CHILD_THEME_NAME . '</a></strong>';
     echo '</p></div>'; // End .website-designed-by
     echo '</div>'; // End .creds
 }
