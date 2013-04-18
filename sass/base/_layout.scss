@@ -1,0 +1,337 @@
+//Grid Settings - Mobile First SUSY Grid
+$total-columns  : 7;
+$column-width   : 4em;
+$gutter-width   : 1em;
+$grid-padding   : $gutter-width;
+
+$break-portrait-tablet: 9;
+$break-screen: 12;
+
+// Set up the grid in #wrap and setup breakpoints for responsive design
+#wrap {
+	@include container;
+	@include susy-grid-background; //uncomment to see grid for mobile
+	
+	  @include at-breakpoint($break-portrait-tablet) {
+	    @include set-container-width;
+	    @include susy-grid-background; //uncomment to see grid for tablet
+	  }
+	  
+	  @include at-breakpoint($break-screen) {
+	    @include set-container-width;
+	    @include susy-grid-background; //uncomment to see grid for screen
+	  }
+}
+
+/*
+#header .search-form {
+		width: 100%;
+	}
+
+	.archive-page,
+	.five-sixths,
+	.four-fifths,
+	.four-sixths,
+	.one-fifth,
+	.one-fourth,
+	.one-half,
+	.one-sixth,
+	.one-third,
+	.three-fifths,
+	.three-fourths,
+	.three-sixths,
+	.two-fifths,
+	.two-fourths,
+	.two-sixths,
+	.two-thirds {
+		margin: 0;
+		width: 100%;
+	}
+*/
+
+// Layout for $break-portrait tablet (9 Columns)
+@include at-breakpoint($break-portrait-tablet) {
+	.footer-widgets-1,
+	.footer-widgets-2,
+	.footer-widgets-3,
+	#header .widget-area {
+	@include span-columns(4,$break-portrait-tablet); }
+	
+	.sidebar,
+	.content-sidebar-sidebar #sidebar,
+	.sidebar-content-sidebar #sidebar,
+	.sidebar-sidebar-content #sidebar {
+		@include span-columns(3,$break-portrait-tablet);
+	}
+	
+	#sidebar-alt {
+		@include span-columns(9,$break-portrait-tablet);
+	}
+	
+	.content-sidebar #content,
+	.sidebar-content #content,
+	#title-area {
+		@include span-columns(9,$break-portrait-tablet);
+	}
+	
+	// Layouts with 2 Sidebars
+	.content-sidebar-sidebar #content-sidebar-wrap,
+	.sidebar-sidebar-content #content-sidebar-wrap,
+	.sidebar-content-sidebar #content-sidebar-wrap {
+	    $main-columns: 9;
+	    @include span-columns($main-columns, $break-portrait-tablet);
+	    
+	    #content { 
+	    	@include span-columns(6,$main-columns) 
+	    }
+	    .sidebar { 
+	    	@include span-columns(3, $main-columns) 
+	    }
+    }
+	
+	.content-sidebar-sidebar #content-sidebar-wrap .sidebar {
+		@include omega;
+	}
+	.sidebar-content-sidebar #content-sidebar-wrap .sidebar {
+		@include omega;
+	}
+	.sidebar-sidebar-content #content-sidebar-wrap #content {
+		@include omega;
+	}
+	
+	// Apply omega (last column)
+	.content-sidebar .sidebar, 
+	.sidebar-content #content,
+	.sidebar-content-sidebar #sidebar,
+	.sidebar-sidebar-content #content,
+	.content-sidebar-sidebar #sidebar-alt,
+	.sidebar-sidebar-content #content-sidebar-wrap,
+	.sidebar-content-sidebar #content-sidebar-wrap,
+	.sidebar-sidebar-content #content-sidebar-wrap #content, 
+	.sidebar-content-sidebar #content-sidebar-wrap .sidebar {
+		@include omega;
+	}
+	
+	#wrap {
+		padding: 0 5%;
+	}
+
+	/*
+.footer-widgets-1,
+	.footer-widgets-2,
+	.footer-widgets-3,
+	.wrap,
+	#footer .creds,
+	#footer .gototop,
+	#header .widget-area,
+	#inner,
+	#title-area,
+	#wrap .sidebar,
+	#wrap #content,
+	#wrap #content-sidebar-wrap,
+	#wrap #sidebar-alt {
+		width: 100%;
+	}
+*/
+
+	.genesis-nav-menu li,
+	#footer .creds,
+	#footer .gototop,
+	#header ul.genesis-nav-menu,
+	#header .search-form {
+		float: none;
+	}
+
+	.genesis-nav-menu,
+	#description,
+	#footer .creds,
+	#footer .gototop,
+	#header .search-form,
+	#title,
+	#title-area {
+		text-align: center;
+	}
+
+	.genesis-nav-menu a {
+		padding: 20px 16px;
+		padding: 1.25rem 1rem;
+	}
+
+	#title {
+		margin: 16px 0;
+		margin: 1rem 0;
+	}
+
+	#header .search-form {
+		margin: 32px auto 0;
+		margin: 2rem auto 0;
+		width: 50%;
+	}
+
+	.genesis-nav-menu li.right {
+		display: none;
+	}
+
+	#footer .wrap {
+		padding: 24px 0;
+		padding: 1.5rem 0;
+	}
+
+	.footer-widgets-1,
+	#header .genesis-nav-menu {
+		margin: 0;
+	}
+	
+	.five-sixths,
+.four-fifths,
+.four-sixths,
+.one-fifth,
+.one-fourth,
+.one-half,
+.one-sixth,
+.one-third,
+.three-fifths,
+.three-fourths,
+.three-sixths,
+.two-fifths,
+.two-fourths,
+.two-sixths,
+.two-thirds {
+	float: left;
+	margin-left: 4.166666666%; /* 48px / 1152px */
+}
+
+.one-half,
+.three-sixths,
+.two-fourths {
+	width: 47.9166666666%; /* 552px / 1152px */
+}
+
+.one-third,
+.two-sixths {
+	width: 30.555555555%; /* 352px / 1152px */
+}
+
+.four-sixths,
+.two-thirds {
+	width: 65.277777777%; /* 752px / 1152px */
+}
+
+.one-fourth {
+	width: 21.875%; /* 252px / 1152px */
+}
+
+.three-fourths {
+	width: 73.958333333%; /* 852px / 1152px */
+}
+
+.one-fifth {
+	width: 16.666666666%; /* 192px / 1152px */
+}
+
+.two-fifths {
+	width: 37.5%; /* 432px / 1152px */
+}
+
+.three-fifths {
+	width: 58.333333333%; /* 672px / 1152px */
+}
+
+.four-fifths {
+	width: 79.166666666%; /* 912px / 1152px */
+}
+
+.one-sixth {
+	width: 13.194444444%; /* 152px / 1152px */
+}
+
+.five-sixths {
+	width: 82.638888888%; /* 952px / 1152px */
+}
+
+.first {
+	margin-left: 0;
+}
+}
+
+// Layout for $break-screen (12 Columns)
+@include at-breakpoint($break-screen) {
+	.footer-widgets-1,
+	.footer-widgets-2,
+	.footer-widgets-3,
+	#header .widget-area {
+	@include span-columns(4,$break-screen); }
+	
+	.sidebar,
+	.content-sidebar-sidebar #sidebar,
+	.sidebar-content-sidebar #sidebar,
+	.sidebar-sidebar-content #sidebar {
+		@include span-columns(3,$break-screen);
+	}
+	
+	#sidebar-alt {
+		@include span-columns(2,$break-screen);
+	}
+	
+	.content-sidebar #content,
+	.sidebar-content #content,
+	#title-area {
+		@include span-columns(9,$break-screen);
+	}
+	
+	// Layouts with 2 Sidebars
+	.content-sidebar-sidebar #content-sidebar-wrap,
+	.sidebar-sidebar-content #content-sidebar-wrap,
+	.sidebar-content-sidebar #content-sidebar-wrap {
+	    $main-columns: 10;
+	    @include span-columns($main-columns, $break-screen);
+	    
+	    #content { 
+	    	@include span-columns(7,$main-columns) 
+	    }
+	    .sidebar { 
+	    	@include span-columns(3, $main-columns) 
+	    }
+    }
+	
+	.content-sidebar-sidebar #content-sidebar-wrap .sidebar {
+		@include omega;
+	}
+	.sidebar-content-sidebar #content-sidebar-wrap .sidebar {
+		@include omega;
+	}
+	.sidebar-sidebar-content #content-sidebar-wrap #content {
+		@include omega;
+	}
+	
+	// Apply omega (last column)
+	.content-sidebar .sidebar, 
+	.sidebar-content #content,
+	.sidebar-content-sidebar #sidebar,
+	.sidebar-sidebar-content #content,
+	.content-sidebar-sidebar #sidebar-alt,
+	.sidebar-sidebar-content #content-sidebar-wrap,
+	.sidebar-content-sidebar #content-sidebar-wrap,
+	.sidebar-sidebar-content #content-sidebar-wrap #content, 
+	.sidebar-content-sidebar #content-sidebar-wrap .sidebar {
+		@include omega;
+	}
+}
+
+#inner {
+	clear: both;
+	overflow: hidden;
+	padding-top: 40px;
+	padding-top: 2.5rem;
+}
+
+/* 04b - 1152px CSS Grid ----------- */
+
+.full-width-content #content,
+.full-width-content #content-sidebar-wrap,
+.content-sidebar #content-sidebar-wrap,
+.sidebar-content #content-sidebar-wrap {
+	width: 100%; /* 1152px / 1152px */
+}
+
+

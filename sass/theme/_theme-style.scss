@@ -1,0 +1,32 @@
+/**  
+  * The main part of you theme SCSS can be setup in this file
+  * Break out chunks to partials if you need more organisation
+  * 
+  * Since version 0.2
+  * @author Brendyn Montgomery brendyn@avocadesign.co.nz
+*/ 
+
+//Import Partials
+@include "colors";
+
+// Include the Entypo Font Icons via @fontface mixin from lib/icon-fonts
+@include en-font; 			// General icons
+@include es-font; 			// Social icons
+
+/*---GLOBAL---*/
+    /*--Structure--*/
+    /*--Typographic--*/
+    /*--Forms--*/
+    /*--Tables--*/
+/*---HEADER---*/
+/*---NAV---*/
+    /*--Primary--*/       
+    /*--Secondary--*/  
+    /*---CONTENT---*/  
+/*---SIDEBAR---*/
+  
+/*---FOOTER---*/
+
+.gototop a {
+	@include en-icon(chevron-up, 3em);
+}
