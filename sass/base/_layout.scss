@@ -1,29 +1,30 @@
 //Grid Settings - Mobile First SUSY Grid
 $total-columns  : 7;
 $column-width   : 4em;
-$gutter-width   : 1em;
+$gutter-width   : 1.5em;
 $grid-padding   : $gutter-width;
 
 $break-portrait-tablet: 9;
 $break-screen: 12;
 
+$genesis-footer-areas: 3;
+
 // Set up the grid in #wrap and setup breakpoints for responsive design
 #wrap {
 	@include container;
-	@include susy-grid-background; //uncomment to see grid for mobile
+	//@include susy-grid-background; 					//uncomment to see grid for mobile
 	
 	  @include at-breakpoint($break-portrait-tablet) {
 	    @include set-container-width;
-	    @include susy-grid-background; //uncomment to see grid for tablet
+	    //@include susy-grid-background; 				//uncomment to see grid for tablet
 	  }
 	  
 	  @include at-breakpoint($break-screen) {
 	    @include set-container-width;
-	    @include susy-grid-background; //uncomment to see grid for screen
+	    //@include susy-grid-background; 			//uncomment to see grid for screen
 	  }
 }
 
-/*
 #header .search-form {
 		width: 100%;
 	}
@@ -47,15 +48,43 @@ $break-screen: 12;
 		margin: 0;
 		width: 100%;
 	}
-*/
+	
+.genesis-nav-menu,
+	#description,
+	#footer .creds,
+	#footer .gototop,
+	#header .search-form,
+	#title,
+	#title-area {
+		text-align: center;
+	}
+
+	.genesis-nav-menu a {
+		padding: 20px 16px;
+		padding: 1.25rem 1rem;
+	}
+
+.genesis-nav-menu li,
+	#footer .creds,
+	#footer .gototop,
+	#header ul.genesis-nav-menu,
+	#header .search-form {
+		float: none;
+}
+
 
 // Layout for $break-portrait tablet (9 Columns)
 @include at-breakpoint($break-portrait-tablet) {
-	.footer-widgets-1,
-	.footer-widgets-2,
-	.footer-widgets-3,
 	#header .widget-area {
-	@include span-columns(4,$break-portrait-tablet); }
+	@include span-columns(3,$break-portrait-tablet); }
+	
+	#footer-widgets {
+		
+		.widget-area {
+		@include span-columns(12 / $genesis-footer-areas,12); 
+		@include nth-omega(#{$genesis-footer-areas}n);
+		}
+	}
 	
 	.sidebar,
 	.content-sidebar-sidebar #sidebar,
@@ -71,7 +100,7 @@ $break-screen: 12;
 	.content-sidebar #content,
 	.sidebar-content #content,
 	#title-area {
-		@include span-columns(9,$break-portrait-tablet);
+		@include span-columns(6,$break-portrait-tablet);
 	}
 	
 	// Layouts with 2 Sidebars
@@ -89,16 +118,6 @@ $break-screen: 12;
 	    }
     }
 	
-	.content-sidebar-sidebar #content-sidebar-wrap .sidebar {
-		@include omega;
-	}
-	.sidebar-content-sidebar #content-sidebar-wrap .sidebar {
-		@include omega;
-	}
-	.sidebar-sidebar-content #content-sidebar-wrap #content {
-		@include omega;
-	}
-	
 	// Apply omega (last column)
 	.content-sidebar .sidebar, 
 	.sidebar-content #content,
@@ -108,39 +127,33 @@ $break-screen: 12;
 	.sidebar-sidebar-content #content-sidebar-wrap,
 	.sidebar-content-sidebar #content-sidebar-wrap,
 	.sidebar-sidebar-content #content-sidebar-wrap #content, 
-	.sidebar-content-sidebar #content-sidebar-wrap .sidebar {
+	.sidebar-content-sidebar #content-sidebar-wrap .sidebar,
+	.sidebar-sidebar-content #content-sidebar-wrap #content,
+	.sidebar-content-sidebar #content-sidebar-wrap .sidebar,
+	.content-sidebar-sidebar #content-sidebar-wrap .sidebar {
 		@include omega;
 	}
+
+	// Tablet and up layout defaults
 	
-	#wrap {
-		padding: 0 5%;
+	.full-width-content #content,
+	.full-width-content #content-sidebar-wrap,
+	.content-sidebar #content-sidebar-wrap,
+	.sidebar-content #content-sidebar-wrap {
+		width: 100%; /* 1152px / 1152px */
 	}
-
-	/*
-.footer-widgets-1,
-	.footer-widgets-2,
-	.footer-widgets-3,
-	.wrap,
-	#footer .creds,
-	#footer .gototop,
-	#header .widget-area,
-	#inner,
-	#title-area,
-	#wrap .sidebar,
-	#wrap #content,
-	#wrap #content-sidebar-wrap,
-	#wrap #sidebar-alt {
-		width: 100%;
-	}
-*/
-
+	
 	.genesis-nav-menu li,
-	#footer .creds,
 	#footer .gototop,
 	#header ul.genesis-nav-menu,
 	#header .search-form {
-		float: none;
+		float: left;
 	}
+	
+	#footer .creds {
+		float: right;
+	}
+	
 
 	.genesis-nav-menu,
 	#description,
@@ -149,7 +162,7 @@ $break-screen: 12;
 	#header .search-form,
 	#title,
 	#title-area {
-		text-align: center;
+		text-align: left;
 	}
 
 	.genesis-nav-menu a {
@@ -256,11 +269,16 @@ $break-screen: 12;
 
 // Layout for $break-screen (12 Columns)
 @include at-breakpoint($break-screen) {
-	.footer-widgets-1,
-	.footer-widgets-2,
-	.footer-widgets-3,
 	#header .widget-area {
 	@include span-columns(4,$break-screen); }
+	
+	#footer-widgets {
+		
+		.widget-area {
+		@include span-columns(12 / $genesis-footer-areas,$break-screen); 
+		@include nth-omega(#{$genesis-footer-areas}n);
+		}
+	}
 	
 	.sidebar,
 	.content-sidebar-sidebar #sidebar,
@@ -294,16 +312,6 @@ $break-screen: 12;
 	    }
     }
 	
-	.content-sidebar-sidebar #content-sidebar-wrap .sidebar {
-		@include omega;
-	}
-	.sidebar-content-sidebar #content-sidebar-wrap .sidebar {
-		@include omega;
-	}
-	.sidebar-sidebar-content #content-sidebar-wrap #content {
-		@include omega;
-	}
-	
 	// Apply omega (last column)
 	.content-sidebar .sidebar, 
 	.sidebar-content #content,
@@ -313,7 +321,10 @@ $break-screen: 12;
 	.sidebar-sidebar-content #content-sidebar-wrap,
 	.sidebar-content-sidebar #content-sidebar-wrap,
 	.sidebar-sidebar-content #content-sidebar-wrap #content, 
-	.sidebar-content-sidebar #content-sidebar-wrap .sidebar {
+	.sidebar-content-sidebar #content-sidebar-wrap .sidebar,
+	.sidebar-sidebar-content #content-sidebar-wrap #content,
+	.sidebar-content-sidebar #content-sidebar-wrap .sidebar,
+	.content-sidebar-sidebar #content-sidebar-wrap .sidebar {
 		@include omega;
 	}
 }
@@ -325,13 +336,7 @@ $break-screen: 12;
 	padding-top: 2.5rem;
 }
 
-/* 04b - 1152px CSS Grid ----------- */
 
-.full-width-content #content,
-.full-width-content #content-sidebar-wrap,
-.content-sidebar #content-sidebar-wrap,
-.sidebar-content #content-sidebar-wrap {
-	width: 100%; /* 1152px / 1152px */
-}
+
 
 

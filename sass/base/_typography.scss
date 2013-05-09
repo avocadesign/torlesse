@@ -120,16 +120,16 @@ h6,
 
 /* 03c - Font Size ----------- */
 
-#title {
-	font-size: 42px;
-	font-size: 2.625rem;
-}
-
 h1,
+#title,
 .entry-title,
 .entry-title a {
-	font-size: 36px;
-	font-size: 2.25rem;
+	@include adjust-font-size-to($xlargepx);
+    @include trailer(1,$xlargepx);
+}
+
+#content {
+	@include leader(0.5);
 }
 
 blockquote::before {
@@ -138,33 +138,31 @@ blockquote::before {
 }
 
 h2 {
-	font-size: 30px;
-	font-size: 1.875rem;
+	@include adjust-font-size-to($largepx);
+    @include trailer(.875,$largepx);
 }
 
 h3 {
-	font-size: 24px;
-	font-size: 1.5rem;
+	@include adjust-font-size-to($largepx);
+    @include leader(1,$largepx);
+    @include trailer(1,$largepx);
 }
 
 h4,
 .archive-title,
 .taxonomy-description h1,
 .widgettitle {
-	font-size: 20px;
-	font-size: 1.25rem;
+	 @include leader(0.5);
 }
 
 h5 {
-	font-size: 18px;
-	font-size: 1.125rem;
+	font-style: italic;
 }
 
 h6,
 .author-box h1,
 .sidebar h2 a {
-	font-size: 16px;
-	font-size: 1rem;
+
 }
 
 input,
@@ -175,9 +173,10 @@ textarea,
 .post-meta,
 .wp-caption,
 #footer p {
-	font-size: 14px;
-	font-size: 0.875rem;
+	
 }
+
+ul, ol, p { @include trailer; }
 
 
 /* 03d - Font Miscellaneous ----------- */

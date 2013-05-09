@@ -26,6 +26,43 @@
   
 /*---FOOTER---*/
 
-.gototop a {
-	@include en-icon(chevron-up, 3em);
+@mixin arrowed-line ($border-width : 1px, $border-color : silver, $bg-color : #fff, $padding : 0.4em, $arrow-size : 0.5em, $arrow-position : 15% ) {
+	position: relative;
+	background: $bg-color;
+	z-index: 1;
+	padding-bottom: $padding;
+	
+	&:before {
+		content: " "; 
+		display: block;
+		position: absolute;
+		bottom: 0;
+		padding: 0;
+		border-bottom: $border-width solid $border-color;
+		width: 100%;
+		height: 100%;
+		z-index: -2;
+	}
+	
+	&:after {
+		content: " "; 
+		display: block; 
+		width: $arrow-size; 
+		height: $arrow-size;
+		position: absolute;
+		border-bottom: $border-width solid $border-color;
+		border-right: $border-width solid $border-color;  
+		background: $bg-color;           /* Go big on the size, and let overflow hide */
+		bottom: 0%;
+		margin-bottom: -#{$arrow-size*0.5011067}; 
+		left: $arrow-position;
+		@include rotate(45deg);
+		z-index: -1;
+	}
+
+}
+
+h4 {
+	@include arrowed-line (1px, silver, white, 0.25em, 0.4em, 15%); 			// $border-width, $border-color, $margin, $arrow-size, $arrow-position
+	
 }

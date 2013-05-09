@@ -1,3 +1,63 @@
+/**  
+  * Responsive nav v1.0.14
+  * https://github.com/viljamis/responsive-nav.js
+  *
+  * Since 0.2
+*/ 
+
+
+/* Navigation Toggle
+------------------------------------------------------------ */
+.menu-toggle {
+display: none;
+visibility: hidden;
+}
+ 
+/* Navigation Toggle - Mobile (Change Width to Whatever)
+------------------------------------------------------------ */
+@media only screen and (max-width: 680px) {
+.menu-toggle {
+background: rgba(0, 0, 0, 0.12);
+color: #ffffff;
+display: block;
+float:right;
+font-size: 16px;
+line-height:16px;
+font-weight:700;
+overflow: hidden;
+margin: 11px 0 0;
+text-align: center;
+text-transform:uppercase;
+visibility: visible;
+moz-border-radius:3px;
+webkit-border-radius:3px;
+border-radius:3px;
+}
+.menu-toggle a {
+color: #ffffff;
+display:block;
+padding: 15px;
+}
+ 
+.menu-toggle a:hover,
+.menu-toggle a:active {
+text-decoration:none;
+}
+#header ul.nav,
+#header ul.menu {
+display: none;
+}
+}
+ 
+/* Navigation Toggle - Ensure Menu Displays When Scaled Up
+------------------------------------------------------------ */
+@media only screen and (min-width: 681px) {
+#header ul.nav,
+#header ul.menu {
+display: block !important;
+}
+}
+
 /*
 05 Menus
 ---------------------------------------------------------------------------------------------------- */
