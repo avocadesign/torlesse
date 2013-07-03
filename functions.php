@@ -20,6 +20,9 @@ require_once( get_template_directory() . '/lib/init.php' );
 		echo '<meta name="viewport" content="width=device-width, initial-scale=1.0"/>';
 	}
 	
+	//* Add HTML5 markup structure
+	add_theme_support( 'genesis-html5' );
+	
 	// Add support for custom background
 	add_theme_support( 'custom-background' );
 	

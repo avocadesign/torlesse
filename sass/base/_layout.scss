@@ -10,7 +10,7 @@ $break-screen: 12;
 $genesis-footer-areas: 3;
 
 // Set up the grid in #wrap and setup breakpoints for responsive design
-#wrap {
+.site-container {
 	@include container;
 	//@include susy-grid-background; 					//uncomment to see grid for mobile
 	
@@ -25,7 +25,7 @@ $genesis-footer-areas: 3;
 	  }
 }
 
-#header .search-form {
+.site-header .search-form {
 		width: 100%;
 	}
 
@@ -51,11 +51,11 @@ $genesis-footer-areas: 3;
 	
 .genesis-nav-menu,
 	#description,
-	#footer .creds,
-	#footer .gototop,
-	#header .search-form,
-	#title,
-	#title-area {
+	.site-footer .creds,
+	.site-footer .gototop,
+	.site-header .search-form,
+	.site-title,
+	.title-area {
 		text-align: center;
 	}
 
@@ -65,20 +65,20 @@ $genesis-footer-areas: 3;
 	}
 
 .genesis-nav-menu li,
-	#footer .creds,
-	#footer .gototop,
-	#header ul.genesis-nav-menu,
-	#header .search-form {
+	.site-footer.creds,
+	.site-footer.gototop,
+	.site-header ul.genesis-nav-menu,
+	.site-header .search-form {
 		float: none;
 }
 
 
 // Layout for $break-portrait tablet (9 Columns)
 @include at-breakpoint($break-portrait-tablet) {
-	#header .widget-area {
+	.site-header .widget-area {
 	@include span-columns(3,$break-portrait-tablet); }
 	
-	#footer-widgets {
+	.footer-widgets {
 		
 		.widget-area {
 		@include span-columns(12 / $genesis-footer-areas,12); 
@@ -87,30 +87,30 @@ $genesis-footer-areas: 3;
 	}
 	
 	.sidebar,
-	.content-sidebar-sidebar #sidebar,
-	.sidebar-content-sidebar #sidebar,
-	.sidebar-sidebar-content #sidebar {
+	.content-sidebar-sidebar .sidebar-primary,
+	.sidebar-content-sidebar .sidebar-primary,
+	.sidebar-sidebar-content .sidebar-primary {
 		@include span-columns(3,$break-portrait-tablet);
 	}
 	
-	#sidebar-alt {
+	.sidebar-secondary {
 		@include span-columns(9,$break-portrait-tablet);
 	}
 	
-	.content-sidebar #content,
-	.sidebar-content #content,
-	#title-area {
+	.content-sidebar .content,
+	.sidebar-content .content,
+	.title-area {
 		@include span-columns(6,$break-portrait-tablet);
 	}
 	
 	// Layouts with 2 Sidebars
-	.content-sidebar-sidebar #content-sidebar-wrap,
-	.sidebar-sidebar-content #content-sidebar-wrap,
-	.sidebar-content-sidebar #content-sidebar-wrap {
+	.content-sidebar-sidebar .content-sidebar-wrap,
+	.sidebar-sidebar-content .content-sidebar-wrap,
+	.sidebar-content-sidebar .content-sidebar-wrap {
 	    $main-columns: 9;
 	    @include span-columns($main-columns, $break-portrait-tablet);
 	    
-	    #content { 
+	    .content { 
 	    	@include span-columns(6,$main-columns) 
 	    }
 	    .sidebar { 
@@ -120,48 +120,48 @@ $genesis-footer-areas: 3;
 	
 	// Apply omega (last column)
 	.content-sidebar .sidebar, 
-	.sidebar-content #content,
-	.sidebar-content-sidebar #sidebar,
-	.sidebar-sidebar-content #content,
-	.content-sidebar-sidebar #sidebar-alt,
-	.sidebar-sidebar-content #content-sidebar-wrap,
-	.sidebar-content-sidebar #content-sidebar-wrap,
-	.sidebar-sidebar-content #content-sidebar-wrap #content, 
-	.sidebar-content-sidebar #content-sidebar-wrap .sidebar,
-	.sidebar-sidebar-content #content-sidebar-wrap #content,
-	.sidebar-content-sidebar #content-sidebar-wrap .sidebar,
-	.content-sidebar-sidebar #content-sidebar-wrap .sidebar {
+	.sidebar-content .content,
+	.sidebar-content-sidebar .sidebar-primary,
+	.sidebar-sidebar-content .content,
+	.content-sidebar-sidebar .sidebar-secondary,
+	.sidebar-sidebar-content .content-sidebar-wrap,
+	.sidebar-content-sidebar .content-sidebar-wrap,
+	.sidebar-sidebar-content .content-sidebar-wrap .content, 
+	.sidebar-content-sidebar .content-sidebar-wrap .sidebar,
+	.sidebar-sidebar-content .content-sidebar-wrap .content,
+	.sidebar-content-sidebar .content-sidebar-wrap .sidebar,
+	.content-sidebar-sidebar .content-sidebar-wrap .sidebar {
 		@include omega;
 	}
 
 	// Tablet and up layout defaults
 	
-	.full-width-content #content,
-	.full-width-content #content-sidebar-wrap,
-	.content-sidebar #content-sidebar-wrap,
-	.sidebar-content #content-sidebar-wrap {
+	.full-width-content .content,
+	.full-width-content .content-sidebar-wrap,
+	.content-sidebar .content-sidebar-wrap,
+	.sidebar-content .content-sidebar-wrap {
 		width: 100%; /* 1152px / 1152px */
 	}
 	
 	.genesis-nav-menu li,
-	#footer .gototop,
-	#header ul.genesis-nav-menu,
-	#header .search-form {
+	.site-footer.gototop,
+	.site-header ul.genesis-nav-menu,
+	.site-header .search-form {
 		float: left;
 	}
 	
-	#footer .creds {
+	.site-footer.creds {
 		float: right;
 	}
 	
 
 	.genesis-nav-menu,
-	#description,
-	#footer .creds,
-	#footer .gototop,
-	#header .search-form,
-	#title,
-	#title-area {
+	.site-description,
+	.site-footer.creds,
+	.site-footer.gototop,
+	.site-header .search-form,
+	.site-title,
+	.title-area {
 		text-align: left;
 	}
 
@@ -175,7 +175,7 @@ $genesis-footer-areas: 3;
 		margin: 1rem 0;
 	}
 
-	#header .search-form {
+	.site-header .search-form {
 		margin: 32px auto 0;
 		margin: 2rem auto 0;
 		width: 50%;
@@ -185,13 +185,13 @@ $genesis-footer-areas: 3;
 		display: none;
 	}
 
-	#footer .wrap {
+	.site-footer.wrap {
 		padding: 24px 0;
 		padding: 1.5rem 0;
 	}
 
 	.footer-widgets-1,
-	#header .genesis-nav-menu {
+	.site-header .genesis-nav-menu {
 		margin: 0;
 	}
 	
@@ -269,10 +269,10 @@ $genesis-footer-areas: 3;
 
 // Layout for $break-screen (12 Columns)
 @include at-breakpoint($break-screen) {
-	#header .widget-area {
+	.site-header .widget-area {
 	@include span-columns(4,$break-screen); }
 	
-	#footer-widgets {
+	.footer-widgets {
 		
 		.widget-area {
 		@include span-columns(12 / $genesis-footer-areas,$break-screen); 
@@ -281,30 +281,30 @@ $genesis-footer-areas: 3;
 	}
 	
 	.sidebar,
-	.content-sidebar-sidebar #sidebar,
-	.sidebar-content-sidebar #sidebar,
-	.sidebar-sidebar-content #sidebar {
+	.content-sidebar-sidebar .sidebar-primary,
+	.sidebar-content-sidebar .sidebar-primary,
+	.sidebar-sidebar-content .sidebar-primary {
 		@include span-columns(3,$break-screen);
 	}
 	
-	#sidebar-alt {
+	.sidebar-secondary {
 		@include span-columns(2,$break-screen);
 	}
 	
-	.content-sidebar #content,
-	.sidebar-content #content,
-	#title-area {
+	.content-sidebar .content,
+	.sidebar-content .content,
+	.title-area {
 		@include span-columns(9,$break-screen);
 	}
 	
 	// Layouts with 2 Sidebars
-	.content-sidebar-sidebar #content-sidebar-wrap,
-	.sidebar-sidebar-content #content-sidebar-wrap,
-	.sidebar-content-sidebar #content-sidebar-wrap {
+	.content-sidebar-sidebar .content-sidebar-wrap,
+	.sidebar-sidebar-content .content-sidebar-wrap,
+	.sidebar-content-sidebar .content-sidebar-wrap {
 	    $main-columns: 10;
 	    @include span-columns($main-columns, $break-screen);
 	    
-	    #content { 
+	    .content { 
 	    	@include span-columns(7,$main-columns) 
 	    }
 	    .sidebar { 
@@ -314,22 +314,22 @@ $genesis-footer-areas: 3;
 	
 	// Apply omega (last column)
 	.content-sidebar .sidebar, 
-	.sidebar-content #content,
-	.sidebar-content-sidebar #sidebar,
-	.sidebar-sidebar-content #content,
-	.content-sidebar-sidebar #sidebar-alt,
-	.sidebar-sidebar-content #content-sidebar-wrap,
-	.sidebar-content-sidebar #content-sidebar-wrap,
-	.sidebar-sidebar-content #content-sidebar-wrap #content, 
-	.sidebar-content-sidebar #content-sidebar-wrap .sidebar,
-	.sidebar-sidebar-content #content-sidebar-wrap #content,
-	.sidebar-content-sidebar #content-sidebar-wrap .sidebar,
-	.content-sidebar-sidebar #content-sidebar-wrap .sidebar {
+	.sidebar-content .content,
+	.sidebar-content-sidebar .sidebar-primary,
+	.sidebar-sidebar-content .content,
+	.content-sidebar-sidebar .sidebar-secondary,
+	.sidebar-sidebar-content .content-sidebar-wrap,
+	.sidebar-content-sidebar .content-sidebar-wrap,
+	.sidebar-sidebar-content .content-sidebar-wrap .content, 
+	.sidebar-content-sidebar .content-sidebar-wrap .sidebar,
+	.sidebar-sidebar-content .content-sidebar-wrap .content,
+	.sidebar-content-sidebar .content-sidebar-wrap .sidebar,
+	.content-sidebar-sidebar .content-sidebar-wrap .sidebar {
 		@include omega;
 	}
 }
 
-#inner {
+.site-inner {
 	clear: both;
 	overflow: hidden;
 	padding-top: 40px;
