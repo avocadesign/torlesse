@@ -135,7 +135,6 @@ function bfg_load_favicons() {
 
 	// Optional: specify a background color for your Windows tablet icon
 	// echo '<meta name="msapplication-TileColor" content="#d83434">';
-<?php
 
 }
 
