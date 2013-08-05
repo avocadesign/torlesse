@@ -9,13 +9,13 @@ if ( ! defined( 'ABSPATH' ) ) exit( 'Cheatin&#8217; uh?' );
  */
 // add_filter( 'widget_text', 'do_shortcode' );
 
-add_action( 'wp_head', 'bfg_remove_recent_comments_widget_styles', 1 );
+add_action( 'wp_head', 'torlesse_remove_recent_comments_widget_styles', 1 );
 /**
  * Remove 'Recent Comments' widget injected styles
  *
  * @since 1.x
  */
-function bfg_remove_recent_comments_widget_styles() {
+function torlesse_remove_recent_comments_widget_styles() {
 
 	global $wp_widget_factory;
 	if (isset($wp_widget_factory->widgets['WP_Widget_Recent_Comments'])) {

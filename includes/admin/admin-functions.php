@@ -2,7 +2,7 @@
 /** Exit if accessed directly */
 if ( ! defined( 'ABSPATH' ) ) exit( 'Cheatin&#8217; uh?' );
 
-add_filter( 'http_request_args', 'bfg_prevent_child_theme_update', 5, 2 );
+add_filter( 'http_request_args', 'torlesse_prevent_child_theme_update', 5, 2 );
 /**
  * Prevent the child theme from being overwritten by a WordPress.org theme with the same name.
  *
@@ -10,7 +10,7 @@ add_filter( 'http_request_args', 'bfg_prevent_child_theme_update', 5, 2 );
  *
  * @since 1.x
  */
-function bfg_prevent_child_theme_update( $r, $url ) {
+function torlesse_prevent_child_theme_update( $r, $url ) {
 
 	if ( 0 !== strpos( $url, 'http://api.wordpress.org/themes/update-check' ) )
 		return $r; // Not a theme update request. Bail immediately.
@@ -22,7 +22,7 @@ function bfg_prevent_child_theme_update( $r, $url ) {
 
 }
 
-add_action( 'pre_ping', 'bfg_disable_self_pings' );
+add_action( 'pre_ping', 'torlesse_disable_self_pings' );
 /**
  * Prevent the child theme from being overwritten by a WordPress.org theme with the same name.
  *
@@ -30,7 +30,7 @@ add_action( 'pre_ping', 'bfg_disable_self_pings' );
  *
  * @since 2.0.0
  */
-function bfg_disable_self_pings( &$links ) {
+function torlesse_disable_self_pings( &$links ) {
 
     foreach ( $links as $l => $link )
         if ( 0 === strpos( $link, home_url() ) )
@@ -48,7 +48,7 @@ function bfg_disable_self_pings( &$links ) {
 // add_image_size( 'desktop-size', 1024, 768, false);
 // add_image_size( 'size-slug', width, height, crop?);
 
-// add_filter( 'image_size_names_choose', 'bfg_image_size_names_choose' );
+// add_filter( 'image_size_names_choose', 'torlesse_image_size_names_choose' );
 /**
  * Add new image sizes to media size selection menu
  *
@@ -56,7 +56,7 @@ function bfg_disable_self_pings( &$links ) {
  *
  * @since 2.0.0
  */
-function bfg_image_size_names_choose( $sizes ) {
+function torlesse_image_size_names_choose( $sizes ) {
 	$sizes['desktop-size'] = 'Desktop';
 	return $sizes;
 }

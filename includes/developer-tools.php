@@ -2,7 +2,7 @@
 /** Exit if accessed directly */
 if ( ! defined( 'ABSPATH' ) ) exit( 'Cheatin&#8217; uh?' );
 
-add_action( 'wp_footer', 'bfg_query_stats' );
+add_action( 'wp_footer', 'torlesse_query_stats' );
 /**
  * Easily see the number of database queries made to load your page in your footer.
  *
@@ -10,13 +10,13 @@ add_action( 'wp_footer', 'bfg_query_stats' );
  *
  * @since 2.0.0
  */
-function bfg_query_stats() {
+function torlesse_query_stats() {
 
 	echo get_num_queries() . ' queries in ' . timer_stop(1) . ' seconds.';
 
 }
 
-// add_action( 'get_header', 'bfg_maintenance_mode' );
+// add_action( 'get_header', 'torlesse_maintenance_mode' );
 /**
  * Easily take your site down for maintenance, giving a 503 message for all non-admins.
  *
@@ -24,7 +24,7 @@ function bfg_query_stats() {
  *
  * @since 2.0.0
  */
-function bfg_maintenance_mode() {
+function torlesse_maintenance_mode() {
 
 	if( !(is_user_logged_in() && current_user_can( 'manage_options' ) ) ) {
 		wp_die( 'Down for maintenance, please come back soon.', 'Down for maintenance, please come back soon.', array('response' => '503'));

@@ -121,7 +121,7 @@ A starting point for new Genesis projects. This is a starter child theme, not a 
 
 ## Changelog
 ### 2.0.6 (July 20, 2013)
-- `bfg_load_scripts` doesn't need to be called with priority `999`
+- `torlesse_load_scripts` doesn't need to be called with priority `999`
 - `input[type="search"]` needs to be explicitly given `box-sizing`. Weird.
 - '[Better Helvetica](http://css-tricks.com/snippets/css/better-helvetica/)' starter sans-serif font stack
 - Buttons should have base `line-height: 1`
@@ -129,7 +129,7 @@ A starting point for new Genesis projects. This is a starter child theme, not a 
 - jQuery version bump
 
 ### 2.0.5 (July 16, 2013)
-- For `comment-reply` script loading, changed `is_singular()` to `is_single() || is_page() || is_attachment()` in `bfg_load_stylesheets()` for better granularity
+- For `comment-reply` script loading, changed `is_singular()` to `is_single() || is_page() || is_attachment()` in `torlesse_load_stylesheets()` for better granularity
 - Added function in `search.php` to redirect directly to the result on searches with only one result (disabled by default)
 - Title links should typically inherit their `.entry-title` color, not show the default link color
 - Added filters in `post.php` to customize the older/newer post navigation text (disabled by default)

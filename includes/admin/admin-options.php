@@ -2,7 +2,7 @@
 /** Exit if accessed directly */
 if ( ! defined( 'ABSPATH' ) ) exit( 'Cheatin&#8217; uh?' );
 
-// add_action( 'genesis_theme_settings_metaboxes', 'bfg_remove_theme_settings_metaboxes' );
+// add_action( 'genesis_theme_settings_metaboxes', 'torlesse_remove_theme_settings_metaboxes' );
 /**
  * Remove some or all of the options metaboxes in Dashboard > Genesis > Theme Settings
  *
@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) exit( 'Cheatin&#8217; uh?' );
  *
  * @since 2.0.0
  */
-function bfg_remove_theme_settings_metaboxes( $_genesis_theme_settings_pagehook ) {
+function torlesse_remove_theme_settings_metaboxes( $_genesis_theme_settings_pagehook ) {
 	remove_meta_box( 'genesis-theme-settings-feeds', $_genesis_theme_settings_pagehook, 'main' );			// Custom Feeds
 	remove_meta_box( 'genesis-theme-settings-layout', $_genesis_theme_settings_pagehook, 'main' );			// Default Layout
 	remove_meta_box( 'genesis-theme-settings-header', $_genesis_theme_settings_pagehook, 'main' );			// Header

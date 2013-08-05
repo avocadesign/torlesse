@@ -2,31 +2,31 @@
 /** Exit if accessed directly */
 if ( ! defined( 'ABSPATH' ) ) exit( 'Cheatin&#8217; uh?' );
 
-add_filter( 'login_headerurl', 'bfg_login_headerurl' );
+add_filter( 'login_headerurl', 'torlesse_login_headerurl' );
 /**
  * Makes the login screen's logo link to your homepage, instead of to WordPress.org.
  *
  * @since 2.0.0
  */
-function bfg_login_headerurl() {
+function torlesse_login_headerurl() {
 
     return home_url();
 
 }
 
-add_filter( 'login_headertitle', 'bfg_login_headertitle' );
+add_filter( 'login_headertitle', 'torlesse_login_headertitle' );
 /**
  * Makes the login screen's logo title attribute your site title, instead of 'WordPress'.
  *
  * @since 2.0.0
  */
-function bfg_login_headertitle() {
+function torlesse_login_headertitle() {
 
     return get_bloginfo( 'name' );
 
 }
 
-// add_action( 'login_enqueue_scripts', 'bfg_replace_login_logo' );
+// add_action( 'login_enqueue_scripts', 'torlesse_replace_login_logo' );
 /**
  * Replaces the login screen's WordPress logo with the 'login-logo.png' in your child theme images folder.
  *
@@ -36,7 +36,7 @@ function bfg_login_headertitle() {
  *
  * @since 2.0.0
  */
-function bfg_replace_login_logo() {
+function torlesse_replace_login_logo() {
 
 	?><style type="text/css">
 		body.login div#login h1 a {
@@ -49,19 +49,19 @@ function bfg_replace_login_logo() {
 
 }
 
-add_filter( 'wp_mail_from_name', 'bfg_mail_from_name' );
+add_filter( 'wp_mail_from_name', 'torlesse_mail_from_name' );
 /**
  * Makes WordPress-generated emails appear 'from' your WordPress site name, instead of from 'WordPress'.
  *
  * @since 2.0.0
  */
-function bfg_mail_from_name() {
+function torlesse_mail_from_name() {
 
 	return get_option( 'blogname' );
 
 }
 
-// add_filter( 'wp_mail_from', 'bfg_wp_mail_from' );
+// add_filter( 'wp_mail_from', 'torlesse_wp_mail_from' );
 /**
  * Makes WordPress-generated emails appear 'from' your WordPress admin email address.
  *
@@ -69,13 +69,13 @@ function bfg_mail_from_name() {
  *
  * @since 2.0.0
  */
-function bfg_wp_mail_from() {
+function torlesse_wp_mail_from() {
 
 	return get_option( 'admin_email' );
 
 }
 
-add_action( 'wp_before_admin_bar_render', 'bfg_remove_wp_icon_from_admin_bar' );
+add_action( 'wp_before_admin_bar_render', 'torlesse_remove_wp_icon_from_admin_bar' );
 /**
  * Removes the WP icon from the admin bar
  *
@@ -83,14 +83,14 @@ add_action( 'wp_before_admin_bar_render', 'bfg_remove_wp_icon_from_admin_bar' );
  *
  * @since 2.0.0
  */
-function bfg_remove_wp_icon_from_admin_bar() {
+function torlesse_remove_wp_icon_from_admin_bar() {
 
     global $wp_admin_bar;
     $wp_admin_bar->remove_menu('wp-logo');
 
 }
 
-// add_filter( 'admin_footer_text', 'bfg_admin_footer_text' );
+// add_filter( 'admin_footer_text', 'torlesse_admin_footer_text' );
 /**
  * Modify the admin footer text
  *
@@ -98,7 +98,7 @@ function bfg_remove_wp_icon_from_admin_bar() {
  *
  * @since 2.0.0
  */
-function bfg_admin_footer_text () {
+function torlesse_admin_footer_text () {
 
 	echo 'YOUR TEXT HERE.';
 

@@ -11,7 +11,7 @@ if( !current_user_can( 'edit_posts' ) ) {
 	add_filter( 'show_admin_bar', '__return_false' );
 }
 
-add_action( 'admin_menu', 'bfg_remove_dashboard_widgets' );
+add_action( 'admin_menu', 'torlesse_remove_dashboard_widgets' );
 /**
  * Disable some or all of the default admin dashboard widgets.
  *
@@ -19,7 +19,7 @@ add_action( 'admin_menu', 'bfg_remove_dashboard_widgets' );
  *
  * @since 1.x
  */
-function bfg_remove_dashboard_widgets() {
+function torlesse_remove_dashboard_widgets() {
 
 	// remove_meta_box( 'dashboard_right_now', 'dashboard', 'core' );				// Right Now
 	// remove_meta_box( 'dashboard_recent_comments', 'dashboard', 'core' );			// Comments
@@ -33,13 +33,13 @@ function bfg_remove_dashboard_widgets() {
 
 }
 
-add_action('widgets_init', 'bfg_unregister_default_widgets');
+add_action('widgets_init', 'torlesse_unregister_default_widgets');
 /**
  * Disable some or all of the default widgets.
  *
  * @since 2.0.0
  */
-function bfg_unregister_default_widgets() {
+function torlesse_unregister_default_widgets() {
 
 	// unregister_widget( 'WP_Widget_Pages' );
 	unregister_widget( 'WP_Widget_Calendar' );
@@ -56,13 +56,13 @@ function bfg_unregister_default_widgets() {
 
 }
 
-add_filter( 'default_hidden_meta_boxes', 'bfg_hidden_meta_boxes', 2 );
+add_filter( 'default_hidden_meta_boxes', 'torlesse_hidden_meta_boxes', 2 );
 /**
  * Change which meta boxes are hidden by default on the post and page edit screens.
  *
  * @since 2.0.0
  */
-function bfg_hidden_meta_boxes( $hidden ) {
+function torlesse_hidden_meta_boxes( $hidden ) {
 
 	global $current_screen;
 	if( 'post' == $current_screen->id ) {
@@ -83,13 +83,13 @@ function bfg_hidden_meta_boxes( $hidden ) {
  */
 // add_editor_style( 'css/editor-style.css' );
 
-add_filter( 'tiny_mce_before_init', 'bfg_tiny_mce_before_init' );
+add_filter( 'tiny_mce_before_init', 'torlesse_tiny_mce_before_init' );
 /**
  * Modifies the TinyMCE settings array
  *
  * @since 2.0.0
  */
-function bfg_tiny_mce_before_init( $options ) {
+function torlesse_tiny_mce_before_init( $options ) {
 
 	$options['wordpress_adv_hidden'] = false;										// Shows the 'kitchen sink' by default
 	$options['theme_advanced_blockformats'] = 'p,h2,h3,h4,blockquote';				// Restrict the Formats available in TinyMCE. Currently excluded: h1,h5,h6,address,pre
@@ -97,7 +97,7 @@ function bfg_tiny_mce_before_init( $options ) {
 
 }
 
-add_filter( 'user_contactmethods', 'bfg_user_contactmethods' );
+add_filter( 'user_contactmethods', 'torlesse_user_contactmethods' );
 /**
  * Updates the user profile contact method fields for today's popular sites.
  *
@@ -105,7 +105,7 @@ add_filter( 'user_contactmethods', 'bfg_user_contactmethods' );
  *
  * @since 2.0.0
  */
-function bfg_user_contactmethods( $fields ) {
+function torlesse_user_contactmethods( $fields ) {
 
 	//$fields['facebook'] = 'Facebook';												// Add Facebook
 	//$fields['twitter'] = 'Twitter';												// Add Twitter
@@ -117,7 +117,7 @@ function bfg_user_contactmethods( $fields ) {
 
 }
 
-// add_action( 'admin_menu', 'bfg_remove_dashboard_menus' );
+// add_action( 'admin_menu', 'torlesse_remove_dashboard_menus' );
 /**
  * Remove default admin dashboard menus
  *
@@ -125,7 +125,7 @@ function bfg_user_contactmethods( $fields ) {
  *
  * @since 2.0.0
  */
-function bfg_remove_dashboard_menus() {
+function torlesse_remove_dashboard_menus() {
 
 	global $menu;
     $restricted = array(__('Dashboard'), __('Posts'), __('Media'), __('Links'), __('Pages'), __('Appearance'), __('Tools'), __('Users'), __('Settings'), __('Comments'), __('Plugins'));
@@ -137,7 +137,7 @@ function bfg_remove_dashboard_menus() {
 
 }
 
-add_filter( 'login_errors', 'bfg_login_errors' );
+add_filter( 'login_errors', 'torlesse_login_errors' );
 /**
  * Prevent the failed login notice from specifying whether the username or the password is incorrect.
  *
@@ -145,13 +145,13 @@ add_filter( 'login_errors', 'bfg_login_errors' );
  *
  * @since 2.0.0
  */
-function bfg_login_errors() {
+function torlesse_login_errors() {
 
     return 'Incorrect login information.';
 
 }
 
-add_action( 'admin_head', 'bfg_hide_admin_help_button' );
+add_action( 'admin_head', 'torlesse_hide_admin_help_button' );
 /**
  * Hide the top-right help pull-down button by adding some CSS to the admin <head>
  *
@@ -159,7 +159,7 @@ add_action( 'admin_head', 'bfg_hide_admin_help_button' );
  *
  * @since 2.0.0
  */
-function bfg_hide_admin_help_button() {
+function torlesse_hide_admin_help_button() {
 
 	?><style type="text/css">
 		#contextual-help-link-wrap {
