@@ -15,17 +15,12 @@
 		margin: 0;
 		padding: 0;
 		text-align: left;
-		
+		border: none;
 
 		&:hover,
 		&:focus,
 		&:active {
-			position: static;
-			
-			@include breakpoint ($mama-bear-and-up) {
-				background: $nav-hover-item;
-			}
-
+		
 			> .sub-menu {
 				left: auto;
 				opacity: 1;
@@ -55,14 +50,11 @@
 			li a {
 				color:$nav-primary-a-color;
 			}
-			
 		}
-		
 		
 		@include breakpoint($mama-bear-and-up) {
 			background: $nav-current-item;
 		}
-		
 	}
 
 	a {
@@ -76,7 +68,35 @@
 			padding-right: $rhythm-height*1em;
 			@include padding-leader($rhythm-height);
 			@include padding-trailer($rhythm-height);
+			
+			&:hover {
+				background: $nav-hover-item;
+			}
 		}
+	}
+	
+	.menu-parent-item > a {
+	
+		@include en-icon(triangle-down, $top: 2px);
+
+		&:before {
+			float: right;
+			padding-left: 10px;
+		}
+		
+		a {
+			@include en-icon(triangle-down, $top: 2px);
+		}
+		
+		@include breakpoint($brother-bear) {
+			&:before {
+				content: "" !important;
+			}
+		}
+	}
+	
+	.sub-menu .menu-parent-item > a {
+		@include en-icon(triangle-right, $top: 2px);
 	}
 	
 	.sub-menu {
@@ -101,7 +121,6 @@
 			width: 200px;
 			
 			li {
-				float: none;
 				
 				&:first-child {
 					margin-left: 0;
@@ -143,7 +162,6 @@
 		float: right;
 		@include padding-leader($rhythm-height);
 		@include padding-trailer($rhythm-height);
-		display: inline-block;
 		list-style-type: none;
 		
 		> a {
@@ -152,7 +170,8 @@
 		}
 		
 		@include breakpoint($brother-bear) {
-			display: none;
+			float: none;
+			@include padding-trailer($rhythm-height);
 		}
 
 	}
@@ -163,19 +182,48 @@
 	}
 
 	> .search {
-		padding: 14px 0 0;
-		padding: 1.4rem 0 0;
 	}
 	
 	.search-form {
-		width: 100%;
+		margin-top: -0.3em;
+		margin-bottom: -5px;
+				
+		input[type="search"] {
+			border: 1px solid darken($nav-primary-bg-colour, 7%);
+			@include border-radius(1em);
+			padding: 0.2em 0.5em;
+			display: inline-block;
+			width: 200px;
+		}
+		
+		input[type="submit"] {
+			@include en-icon(search);
+			border: 0;
+			background: transparent;
+			display: inline-block;
+			
+			&:after {
+				content: "\1F50D";
+				line-height: 1em;
+				font-family: "entypo";
+				font-weight: normal;
+				font-style: normal;
+				display: inline-block;
+				text-decoration: none;
+				vertical-align: middle;
+				text-rendering: optimizeLegibility !important;
+				-webkit-font-smoothing: antialiased !important;
+
+			}
+		}
 	}
+
+	
 }
 
 a#nav-toggle {
 	@include en-icon(list, $margin: 0.168*2em,  $top: -2px);
 }
-
 
 /*! responsive-nav.js v1.0.16 by @viljamis */
 @include breakpoint($brother-bear) {
@@ -213,6 +261,7 @@ a#nav-toggle {
     display: none;
   }
 }
+
 
 
 

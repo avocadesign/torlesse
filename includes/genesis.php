@@ -21,6 +21,8 @@ add_theme_support( 'html5' );
  */
 add_theme_support( 'genesis-responsive-viewport' );
 
+//add_filter( 'genesis_superfish_enabled', '__return_true' );
+
 /**
  * Add support for custom backgrounds
  *
@@ -77,13 +79,13 @@ add_theme_support( 'genesis-structural-wraps', array(
 // unregister_sidebar( 'sidebar-alt' );
 // unregister_sidebar( 'sidebar' );
 
-// add_action( 'widgets_init', 'bfg_remove_genesis_widgets', 20 );
+// add_action( 'widgets_init', 'torlesse_remove_genesis_widgets', 20 );
 /**
  * Disable some or all of the default Genesis widgets.
  *
  * @since 2.0.0
  */
-function bfg_remove_genesis_widgets() {
+function torlesse_remove_genesis_widgets() {
 
     unregister_widget( 'Genesis_Featured_Page' );									// Featured Page
     unregister_widget( 'Genesis_User_Profile_Widget' );								// Featured Posts
@@ -91,13 +93,13 @@ function bfg_remove_genesis_widgets() {
 
 }
 
-// add_action( 'init', 'bfg_remove_layout_meta_boxes' );
+// add_action( 'init', 'torlesse_remove_layout_meta_boxes' );
 /**
  * Remove the Genesis 'Layout Settings' meta box for posts and/or pages.
  *
  * @since 2.0.0
  */
-function bfg_remove_layout_meta_boxes() {
+function torlesse_remove_layout_meta_boxes() {
 
     remove_post_type_support( 'post', 'genesis-layouts' );							// Posts
     remove_post_type_support( 'page', 'genesis-layouts' );							// Pages

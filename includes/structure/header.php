@@ -14,7 +14,7 @@ remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );	// Adjacen
 remove_action( 'wp_head', 'wp_generator' );								// WP Version
 
 remove_action( 'genesis_meta', 'genesis_load_stylesheet' );
-add_action( 'wp_enqueue_scripts', 'bfg_load_stylesheets', 999 );
+add_action( 'wp_enqueue_scripts', 'torlesse_load_stylesheets', 999 );
 /**
  * Overrides the default Genesis stylesheet with child theme specific.
  *
@@ -22,7 +22,7 @@ add_action( 'wp_enqueue_scripts', 'bfg_load_stylesheets', 999 );
  *
  * @since 2.0.0
  */
-function bfg_load_stylesheets() {
+function torlesse_load_stylesheets() {
     if( ( is_single() || is_page() || is_attachment() ) && comments_open() & get_option( 'thread_comments' ) == 1 ) {
 		wp_enqueue_script( 'comment-reply' );
     } else {
@@ -50,7 +50,7 @@ function bfg_load_stylesheets() {
 
 }
 
-add_action( 'wp_enqueue_scripts', 'bfg_load_scripts' );
+add_action( 'wp_enqueue_scripts', 'torlesse_load_scripts' );
 /**
  * Load scripts
  *
@@ -58,7 +58,7 @@ add_action( 'wp_enqueue_scripts', 'bfg_load_scripts' );
  *
  * @since 2.0.0
  */
-function bfg_load_scripts() {
+function torlesse_load_scripts() {
 
     if( !is_admin() ) {
 		// Override WP'd default self-hosted jQuery with version from Google's CDN
@@ -97,7 +97,7 @@ function torlesse_responsive_nav() {
 	<?php
 }
 
-add_filter( 'style_loader_tag', 'bfg_ie_conditionals', 10, 2 );
+add_filter( 'style_loader_tag', 'torlesse_ie_conditionals', 10, 2 );
 /**
  * Wrap stylesheets in IE conditional comments.
  *
@@ -105,7 +105,7 @@ add_filter( 'style_loader_tag', 'bfg_ie_conditionals', 10, 2 );
  *
  * @since 1.x
  */
-function bfg_ie_conditionals( $tag, $handle ) {
+function torlesse_ie_conditionals( $tag, $handle ) {
 
 	if( 'bfg' == $handle ) {
         $output = '<!--[if !IE]> -->' . "\n" . $tag . '<!-- <![endif]-->' . "\n";
@@ -122,20 +122,20 @@ function bfg_ie_conditionals( $tag, $handle ) {
 
 }
 
-// add_filter( 'genesis_pre_load_favicon', 'bfg_pre_load_favicon' );
+// add_filter( 'genesis_pre_load_favicon', 'torlesse_pre_load_favicon' );
 /**
  * Simple favicon override to specify your favicon's location
  *
  * @since 2.0.0
  */
-function bfg_pre_load_favicon() {
+function torlesse_pre_load_favicon() {
 
 	return get_stylesheet_directory_uri() . '/images/favicon.ico';
 
 }
 
 // remove_action( 'wp_head', 'genesis_load_favicon' );
-// add_action( 'wp_head', 'bfg_load_favicons' );
+// add_action( 'wp_head', 'torlesse_load_favicons' );
 /**
  * Show the best favicon, within reason
  *
@@ -143,7 +143,7 @@ function bfg_pre_load_favicon() {
  *
  * @since 2.0.4
  */
-function bfg_load_favicons() {
+function torlesse_load_favicons() {
 
 	$favicon_path = get_stylesheet_directory_uri() . '/images/favicons';
 
@@ -168,13 +168,13 @@ function bfg_load_favicons() {
 }
 
 
-add_filter( 'body_class', 'bfg_no_js_body_class' );
+add_filter( 'body_class', 'torlesse_no_js_body_class' );
 /**
  * Adds a 'no-js' class to <body>, for testing the presence of JavaScript
  *
  * @since 2.0.0
  */
-function bfg_no_js_body_class( $classes ) {
+function torlesse_no_js_body_class( $classes ) {
 
 	$classes[] = 'no-js';
 	return $classes;
