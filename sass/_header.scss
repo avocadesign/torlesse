@@ -1,3 +1,5 @@
+
+
 .title-area {
 	float: left;
 }
@@ -29,9 +31,14 @@
 .site-description {
 	margin: 0;
 	line-height: 1;
+	color: darken($heading-color,15%);
 }
 
 .site-header {
+	background: $header-bg-color;
+	@extend %remove-outer-gutter;		//Negative margins to bring block out to edge of .site-inner
+	@include padding-leader($rhythm-height);
+	@include padding-trailer($rhythm-height);
 
 	.widget-area {
 		float: right;

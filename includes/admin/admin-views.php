@@ -1,4 +1,7 @@
 <?php
+/** Exit if accessed directly */
+if ( ! defined( 'ABSPATH' ) ) exit( 'Cheatin&#8217; uh?' );
+
 /**
  * Only show the admin bar to users who can at least use Posts
  *

@@ -1,26 +1,34 @@
 // Compass & Variables
 @import "compass/css3";
+@import "compass/typography";
+@import "compass/utilities";
 @import "variables";
+
+//Import Compass extensions
+@import "susy";
+@import "breakpoint";
+@import "modular-scale";
 
 // Normalize, Clearfix, & Toolkit
 @import "normalize.scss/_normalize.scss";
-@import "clearfix";
-@import "toolkit";
+@import "utilities/clearfix";
+@import "utilities/toolkit";
+@import "lib/lib-all";
 
 // Universal Box-Sizing
 *,
 :before,
-:after {
+:after,
+input[type="search"] {
 	@include box-sizing(border-box);
 }
 
 // Sitewide Styles
 @import "type";
-@import "headings";
 @import "objects-and-images";
 @import "forms";
 @import "layout";
-@import "grid";
+@import "utilities/grid";
 
 // Module Styles
 @import "header";
@@ -30,8 +38,7 @@
 @import "sidebars";
 @import "footer";
 
-// Print
-@import "print";
+@import "site";
 
-// Shame - For new style snippets that haven't been sorted and commented yet
-@import "shame";
+// Print
+@import "utilities/print";

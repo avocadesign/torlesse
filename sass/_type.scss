@@ -1,7 +1,28 @@
+// Typography mixins
+
+// Fonts in rems with px fallback
+
+@mixin font-size($size, $is-important: false) {
+  $size: if(unitless($size), $size, $size / 1px);
+
+  @if $is-important {
+    font-size: $size + px !important;
+    font-size: ($size / strip-units($base-font-size)) + rem !important;
+  } @else {
+    font-size: $size + px;
+    font-size: ($size / strip-units($base-font-size)) + rem;
+  }
+}
+
+
+
+
 body {
 	font-weight: 300;
-	// text-rendering:  optimizeLegibility;
+	font-family: $sans;
+	// text-rendering:  optimizeLegibility // Use with caution. May break certain @font-face fonts.
 }
+
 
 a,
 button,
@@ -21,27 +42,243 @@ textarea:focus {
 	// text-shadow: none;
 }
 
-a {
 
-	&:hover,
-	&:focus,
-	&:active {
 
-	}
+// Heading Styles
 
-	img {
-	}
+h1,h2,h3,h4,h5,h6 {
+  color: $heading-color;
+  font-weight: $header-font-weight;
+  text-rendering: optimizeLegibility;
+  margin: 0;
+   
+  @include padding-leader($rhythm-spacing);
+  @include adjust-leading-to($rhythm-height);
+  @include padding-trailer($rhythm-spacing);
+
+ 
+  a {
+    color: $header-link-color;
+  }
 }
 
-ol,
-ul,
+h1 {
+  @include font-size($xxxlarge);
+  @include padding-leader($rhythm-spacing*2);
+
+  &.xlarge {
+    @include font-size($reallybig);
+  }
+  &.xxlarge {
+    @include font-size($tremendous);
+  }
+  &.absurd {
+    @include font-size($absurd);
+  }
+}
+h2 { @include font-size($xlarge); }
+h3 { @include font-size($larger);}
+h4 { @include font-size($large);}
+h5 { @include font-size($med);}
+h6 { @include font-size($norm);}
+
+@include breakpoint(baby-bear) {
+
+  h1 { @include font-size($xlarge);}
+  h2 { @include font-size($larger + 6);}
+
+}
+
+.site-title {
+	@extend h1
+}
+
+.site-description {
+	@extend h2
+}
+
+
+/*=====================================================
+ 
+  Links & Paragraph styles
+  
+  ======================================================*/
+
 p {
-	margin: 0;
-	padding: 0;
-	list-style: none;
+  color: $body-copy-color;
+  font-family: $font-family;
+  font-weight: $body-font-weight;
+  @include font-size($base-font-size);
+  margin-bottom: $base-line-height/1.5;
+  margin-top: 0;
+  @include adjust-leading-to(1);
+  
+  &.lead {
+    @include font-size(ms(0) * 1.25);
+    margin-bottom: ms(1);
+    font-weight: $first-paragraph-font-weight;
+  }
+  
+  @include breakpoint(brother-bear) {
+    @include font-size($base-font-size * 1.1);
+    @include adjust-leading-to(1);
+  }
+  
+  & + p {
+		text-indent: 0;					// remove indent for second level paragraphs (typeplate), remove selector to revert
+		margin-top: 0;					// remove negative margin-top for second level paragraphs (typeplate), remove selector to revert
+	}
+
+}
+
+a {
+  color: $a-color;
+  text-decoration: none;
+  outline: 0;
+  line-height: inherit;
+  
+  &:hover,
+  &:focus,
+  &:active {
+	color: $a-hover-color;
+  }
+  
+  img {
+	  
+  }
+}
+
+/*=====================================================
+
+  Lists
+  
+ ======================================================*/
+
+ul, ol {
+  @include margin-trailer($rhythm-spacing);
+}
+
+ul {
+  list-style: none outside;
+}
+
+ol {
+  list-style: decimal;
+  margin-left: 30px;
+}
+
+
+ul {
+  &.square, &.circle, &.disc {
+    margin-left: 25px;
+  }
+  &.square {
+    list-style: square outside;
+  }
+  &.circle {
+    list-style: circle outside;
+  }
+  &.disc {
+    list-style: disc outside;
+  }
+  ul {
+    margin: 4px 0 5px 25px;
+  }
+}
+
+ol ol {
+  margin: 4px 0 5px 30px;
+}
+
+li {
+  @include padding-trailer($rhythm-spacing);
+}
+
+ul.large li {
+  line-height: 21px;
+}
+
+dl dt {
+  font-weight: bold;
+  @include font-size($norm);
+}
+
+@include breakpoint(brother-bear) {
+  
+  ul, ol, dl, p { text-align: left;}
+
 }
 
 pre {
 	overflow: scroll;
 	white-space: pre;
+}
+
+/* Mobile */
+
+em {
+  font-style: italic;
+  line-height: inherit;
+}
+
+strong {
+  font-weight: $font-weight-bold;
+  line-height: inherit;
+}
+
+small {
+  font-size: 56.4%;
+  line-height: inherit;
+}
+
+h1 small, h2 small, h3 small, h4 small, h5 small {
+  color: #777;
+}
+
+/*  Blockquotes  */
+
+blockquote {
+
+  color: #777;
+  p {
+    
+    color: #777;
+  }
+  margin: 0 0 18px;
+  padding: 9px 20px 0 19px;
+  border-left: 5px solid $horizontal-rule-color;
+  cite {
+    display: block;
+    font-size: 12px;
+    font-size: 1.2rem;
+    color: $body-copy-color;
+    &:before {
+      content: "\2014 \0020";
+    }
+    a {
+      color: $body-copy-color;
+      &:visited {
+        color: $body-copy-color;
+      }
+    }
+  }
+}
+
+hr {
+  border: 1px solid $horizontal-rule-color;
+  clear: both;
+  margin: 16px 0 18px;
+  height: 0;
+}
+
+abbr, acronym {
+  text-transform: uppercase;
+  font-size: 90%;
+  color: #222;
+  border-bottom: 1px solid $horizontal-rule-color;
+  cursor: help;
+}
+
+abbr {
+  text-transform: none;
 }

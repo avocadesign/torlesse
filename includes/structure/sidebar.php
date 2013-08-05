@@ -1,4 +1,7 @@
 <?php
+/** Exit if accessed directly */
+if ( ! defined( 'ABSPATH' ) ) exit( 'Cheatin&#8217; uh?' );
+
 /**
  * Allow shortcodes in text widgets
  *

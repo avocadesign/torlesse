@@ -1,13 +1,28 @@
+//Define the number of footer areas
+$genesis-footer-areas: 3; 				//Genesis support for the number of footer widgets is set in includes/genesis.php 
+
 .footer-widgets {
 	clear: both;
-
-	.footer-widgets-1,
-	.footer-widgets-2 {
-		float: left;
-	}
-
-	.footer-widgets-3 {
-		float: right;
+	border-top: 1px solid darken($body-bg-color, 5%);
+	@include padding-leader($rhythm-height);
+	@include padding-trailer($rhythm-height);
+	
+	
+	.widget-area {
+		
+		@include breakpoint($mama-bear-and-up) {
+			//$Mama-bear-total-columns is set in _layout.scss
+			@include span-columns($mama-bear-total-cols / $genesis-footer-areas,$mama-bear-total-cols); 
+			@include nth-omega(#{$genesis-footer-areas}n);
+		}
+		
+		@include breakpoint($papa-bear) {
+			//$Papa-bear-total-columns is set in _layout.scss
+			@include span-columns($papa-bear-total-cols / $genesis-footer-areas,$papa-bear-total-cols); 
+			@include nth-omega(#{$genesis-footer-areas}n);
+		}
+		
+		
 	}
 
 	a {
@@ -33,8 +48,14 @@
 }
 
 .site-footer {
-
+	@extend %remove-outer-gutter;		//Negative margins to bring block out to edge of .site-inner
+	background: $footer-bg-color;
+	color:$footer-text-color;
+	@include padding-leader($rhythm-height);
+	@include padding-trailer($rhythm-height);
+	
+	
 	a {
-
+		color:$footer-text-color;
 	}
 }

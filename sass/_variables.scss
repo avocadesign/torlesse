@@ -1,21 +1,71 @@
+@import "modular-scale";
+
 /*********************
-SIZES
+BREAKPOINTS
+
+www.Breakpoint-sass.com
+
+──baby-bear─┤   ├──mama-bear──┤ ├─papa-bear────────────
+├──baby-bear-and-up────────────────────────────────────
+─brother-bear───┤                      ├─papa-bear-wide
+                ├──mama-bear-and-up────────────────────
+                
 *********************/
-@mixin breakpoint($point) {
-  @if $point == full {
-    @media (min-width: 55em) { @content; }
-  }
-  @else if $point == tablet {
-    @media (max-width: 55em) { @content; }
-  }
-  @else if $point == phone {
-    @media (max-width: 45em)  { @content; }
-  }
-}
+$baby-bear: max-width 480px;
+$baby-bear-and-up: 320px;
+$brother-bear: max-width 800px;
+$mama-bear: 801px 1023px;
+$mama-bear-and-up: 801px;
+$papa-bear: 1024px;
+$papa-bear-wide: 1500px;
 
 /*********************
 COLORS
 *********************/
+
+// Color Palette
+	$red: #D66360;
+	$mid-grey: #AFA8A2;
+	$light-grey: #F2F1ED;
+	$grey: #AFA8A2;
+	$dark-grey: #312F30;
+
+
+// Background Colours
+	$body-bg-color: $light-grey;
+	$header-bg-color: $grey;
+	$site-container-bg-color: $light-grey;
+	$site-inner-bg-color: $light-grey;
+	$footer-bg-color: $dark-grey;
+
+// Typography Colors
+	
+	// Headings
+	$heading-color: $grey;
+	$header-link-color: $red;
+	
+	// Body Copy
+	$body-copy-color: #444;
+
+	// Links
+	$a-color: $red;						// main anchor text colour
+	$a-hover-color: $red;				// hover colour
+
+	// Sections
+	$footer-text-color: #fff;
+	
+	$horizontal-rule-color: darken($light-grey, 5%);
+
+// Main Nav
+
+	$nav-primary-bg-colour: $red;
+	$sub-menu-bg: lighten($red, 5%);
+	
+	$nav-current-item: rgba(0,0,0, 0.07);
+	$nav-hover-item: rgba(255,255,255, 0.07);
+
+	$nav-primary-a-color: #fff;
+	$sub-menu-a-color: #fff;
 
 /*********************
 SOCIAL COLORS - http://designpieces.com/2012/12/social-media-colours-hex-and-rgb/
@@ -32,10 +82,52 @@ $instagram:			#517fa4;
 $vimeo:				#aad450;
 $foursquare: 		#0072b1;
 
-/*********************
-SPRITES
-*********************/
+// Font Weights
+$font-weight-bold: 700;
+$font-weight-semibold: 600;
+$font-weight-medium: 400;
+$font-weight-regular: 400;
+$font-weight-light: 300;
+$font-weight-thin: 300;
 
-/*********************
-TYPOGRAPHY
-*********************/
+$header-font-weight: $font-weight-thin;
+$body-font-weight: $font-weight-regular;
+$first-paragraph-font-weight: $font-weight-semibold;
+$type-font-weight: $font-weight-regular;
+$link-font-weight: $font-weight-regular;
+$button-font-weight: $font-weight-semibold;
+$tabs-font-weight: $font-weight-semibold;
+
+// Vertical Rhythm Spacing
+$base-line-height: ms(1) !default;
+$rhythm-spacing: .168;				// ms(-7)
+$rhythm-height: .711;				// ms (-1)
+
+// Modular Scale Settings
+// http://www.modularscale.com by Tim Brown
+// http://modularscale.com/scale/?px1=16&px2=78&ra1=1.618&ra2=0
+// https://github.com/scottkellum/modular-scale
+$ratio: golden();						// Ratio for Modular Scale
+$base-font-size: 16px;
+$importantNum: 78px;
+$base-size: $base-font-size $importantNum;
+// Torlesse Default Scale Values: 16, 18, 26, 30, 42, 48, 68, 78, 110, 126;
+
+// Sizing
+$xsmall: ms(-2);
+$small: ms(-1);
+$norm: ms(0);									// $base-font-size (16px == default)
+$med: ms(1);
+$large: ms(2);
+$larger: ms(3);
+$xlarge: ms(4);
+$xxlarge: ms(5);
+$xxxlarge: ms(6);
+$reallybig: ms(8);
+$tremendous: ms(9);
+$absurd: ms(10);
+
+// 'Better Helvetica' via http://css-tricks.com/snippets/css/better-helvetica/
+$sans:				"HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+
+$font-family: $sans;

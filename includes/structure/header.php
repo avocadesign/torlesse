@@ -1,4 +1,7 @@
 <?php
+/** Exit if accessed directly */
+if ( ! defined( 'ABSPATH' ) ) exit( 'Cheatin&#8217; uh?' );
+
 /**
  * Cleanup <head>
  *
@@ -20,7 +23,7 @@ add_action( 'wp_enqueue_scripts', 'bfg_load_stylesheets', 999 );
  * @since 2.0.0
  */
 function bfg_load_stylesheets() {
-    if( is_singular() && comments_open() & get_option( 'thread_comments' ) == 1 ) {
+    if( ( is_single() || is_page() || is_attachment() ) && comments_open() & get_option( 'thread_comments' ) == 1 ) {
 		wp_enqueue_script( 'comment-reply' );
     } else {
 		wp_dequeue_script( 'comment-reply' );
@@ -47,7 +50,7 @@ function bfg_load_stylesheets() {
 
 }
 
-add_action( 'wp_enqueue_scripts', 'bfg_load_scripts', 999 );
+add_action( 'wp_enqueue_scripts', 'bfg_load_scripts' );
 /**
  * Load scripts
  *
@@ -59,13 +62,39 @@ function bfg_load_scripts() {
 
     if( !is_admin() ) {
 		// Override WP'd default self-hosted jQuery with version from Google's CDN
-		wp_deregister_script( 'jquery' );
-		wp_register_script( 'jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js', array(), null);
+		//wp_deregister_script( 'jquery' );
+		//wp_register_script( 'jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js', array(), null);
 
 		// Main script file (in footer)
 	    wp_enqueue_script( 'bfg', get_stylesheet_directory_uri() . '/js/scripts-ck.js', array( 'jquery' ), null, true );
+	    wp_enqueue_script( 'responsive-nav-toggle', get_stylesheet_directory_uri() . '/js/responsive-nav.min.js', array( 'jquery' ), null, true );
     }
 
+}
+
+add_filter( 'genesis_pre_get_option_nav_superfish', 'nrp_get_option_nav_superfish' );
+function nrp_get_option_nav_superfish( $opt ) {
+    $opt = '1';
+    return $opt;
+}
+
+add_action ( 'wp_footer' , 'torlesse_responsive_nav', 40 );
+
+function torlesse_responsive_nav() {
+	?>
+		<script>
+		  var navigation = responsiveNav("#menu-main-menu", { // Selector: The ID of the wrapper
+			  transition: 400, // Integer: Speed of the transition, in milliseconds
+			  label: "Menu", // String: Label for the navigation toggle
+			  insert: "before", // String: Insert the toggle before or after the navigation
+			  openPos: "relative", // String: Position of the opened nav, relative or static
+			  jsClass: "js", // String: 'JS enabled' class which is added to <html> el
+			  init: function(){}, // Function: Init callback
+			  open: function(){}, // Function: Open callback
+			  close: function(){} // Function: Close callback
+			});
+		</script>
+	<?php
 }
 
 add_filter( 'style_loader_tag', 'bfg_ie_conditionals', 10, 2 );

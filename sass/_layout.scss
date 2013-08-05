@@ -1,43 +1,163 @@
-.wrap {
+/*********************
+Grid Settings - Mobile First SUSY Grid
+*********************/
+
+
+$total-columns  : 7;
+$column-width   : 4.236em;
+$gutter-width   : 1.618em;
+$grid-padding   : $gutter-width;
+
+// negative margins left ad right the width of the SUSY grid gutter
+%remove-outer-gutter {
+	margin-left: -$grid-padding;
+	margin-right: -$grid-padding;
+	padding: 0 $grid-padding;
+}
+
+/*********************
+*
+* Variables for #cols SUSY breakpoints
+*
+* Mobile first layout with two breakpoints by default, Mama bear and up and Papa Bear
+* 
+* _variables.scss to change breakpoint widths
+*
+* Since 2.0.0
+*********************/
+
+$mama-bear-content-cols: 6;
+$mama-bear-sidebar-primary-cols: 3;
+$mama-bear-sidebar-secondary-cols: 9;
+$mama-bear-total-cols: $mama-bear-content-cols + $mama-bear-sidebar-primary-cols; 	//Mama Bear total cols = content-cols + sidebar-primary-cols
+
+$papa-bear-content-cols: 7;
+$papa-bear-sidebar-primary-cols: 3;
+$papa-bear-sidebar-secondary-cols: 2;
+$papa-bear-single-sidebar-cols: 4;			// Single sidebar layouts at papa bear size can have different column counts
+$papa-bear-total-cols: $papa-bear-content-cols + $papa-bear-sidebar-primary-cols + $papa-bear-sidebar-secondary-cols; //Papa Bear total cols = content-cols + main-sidebar-cols + alt-sidebar-cols
+
+/*********************
+LAYOUT
+*********************/
+
+html, 
+body {
+	background: $body-bg-color;
+}
+
+// Setup Responsive widths and the number of columns in SUSY
+.site-container {
+	background: $site-container-bg-color;
 	// @extend %wrap;
+	
+	@include container;
+	//padding: 0;										//removes the gutter width padding at the edge of the container
+	//@include susy-grid-background; 					//uncomment to see grid for mobile
+	
+	@include breakpoint($mama-bear-and-up) {
+		$total-columns: $mama-bear-total-cols;
+		@include set-container-width($mama-bear-total-cols);
+		//@include susy-grid-background; 					//uncomment to see grid for Mama Bear
+	}
+	
+	@include breakpoint($papa-bear) {
+		$total-columns: $papa-bear-total-cols;
+		@include set-container-width($papa-bear-total-cols);
+		//@include susy-grid-background; 					//uncomment to see grid for Papa Bear
+	}
 }
 
 .site-inner {
+	background: $site-inner-bg-color;
 	clear: both;
+	padding-top: $base-line-height;
+	padding-bottom: $base-line-height;
 }
 
 .content-sidebar-sidebar,
 .sidebar-content-sidebar,
 .sidebar-sidebar-content {
-
+	
+	.content,
+	.sidebar-primary, 
+	.sidebar-secondary,
 	.content-sidebar-wrap {
-
+		width: 100%;
+	}
+	
+	// Mama Bear Breakpoint
+	@include breakpoint($mama-bear-and-up) {
+		
+		.content-sidebar-wrap {
+			@include span-columns($mama-bear-content-cols+$mama-bear-sidebar-primary-cols,$mama-bear-total-cols);
+		}
+		
+		.content {
+			@include span-columns($mama-bear-content-cols,$mama-bear-total-cols);
+		}
+		
+		.sidebar-primary {
+			@include span-columns($mama-bear-sidebar-primary-cols,$mama-bear-total-cols);
+		}
+		
+		.sidebar-secondary {
+			@include span-columns($mama-bear-sidebar-secondary-cols,$mama-bear-total-cols);
+		}
+	}
+	
+	// Papa Bear Breakpoint
+	@include breakpoint($papa-bear) {
+		
+		.content-sidebar-wrap {
+			@include span-columns($papa-bear-content-cols+$papa-bear-sidebar-primary-cols,$papa-bear-total-cols);
+		}
+		
+		.content {
+			@include span-columns($papa-bear-content-cols,$papa-bear-total-cols - $papa-bear-sidebar-secondary-cols);
+		}
+		
+		.sidebar-primary {
+			@include span-columns($papa-bear-sidebar-primary-cols,$papa-bear-total-cols - $papa-bear-sidebar-secondary-cols);
+		}
+		
+		.sidebar-secondary {
+			@include span-columns($papa-bear-sidebar-secondary-cols,$papa-bear-total-cols);
+		}
 	}
 
-	.content {
-
-	}
 }
 
-.content-sidebar-sidebar {
-
-	.content-sidebar-wrap {
-
+.content-sidebar,
+.sidebar-content {
+	
+	.content,
+	.sidebar-primary {
+		width: 100%;
 	}
-}
-
-.sidebar-content-sidebar,
-.sidebar-sidebar-content {
-
-	.content-sidebar-wrap {
-
+	
+	// Mama Bear Breakpoint
+	@include breakpoint($mama-bear-and-up) {
+		.content {
+			@include span-columns($mama-bear-content-cols,$mama-bear-total-cols);
+		}
+		
+		.sidebar-primary {
+			@include span-columns($mama-bear-sidebar-primary-cols,$mama-bear-total-cols);
+		}
 	}
-}
-
-.content-sidebar .content,
-.content-sidebar-sidebar .content,
-.sidebar-content-sidebar .content {
-
+	
+	// Papa Bear Breakpoint
+	@include breakpoint($papa-bear) {
+	
+		.content {
+			@include span-columns($papa-bear-total-cols - $papa-bear-single-sidebar-cols,$papa-bear-total-cols);
+		}
+		
+		.sidebar-primary {
+			@include span-columns($papa-bear-single-sidebar-cols,$papa-bear-total-cols);
+		}
+	}
 }
 
 .full-width-content {
@@ -47,25 +167,18 @@
 	}
 }
 
-.sidebar-primary {
-
-}
-
-.sidebar-content,
-.sidebar-sidebar-content {
-
-	.sidebar-primary{
-
+@include breakpoint($mama-bear-and-up) {
+	// Apply omega (last column)
+	.content-sidebar .sidebar-primary, 
+	.sidebar-content .content,
+	.content-sidebar-sidebar .sidebar-primary,
+	.content-sidebar-sidebar .sidebar-secondary,
+	.sidebar-content-sidebar .content,
+	.sidebar-content-sidebar .sidebar-secondary,
+	.sidebar-sidebar-content .content,
+	.sidebar-sidebar-content .content-sidebar-wrap {
+		@include omega;
 	}
 }
 
-.sidebar-secondary {
-
-}
-
-.content-sidebar-sidebar {
-
-	.sidebar-secondary {
-
-	}
-}
+// padding

@@ -1,4 +1,7 @@
 <?php
+/** Exit if accessed directly */
+if ( ! defined( 'ABSPATH' ) ) exit( 'Cheatin&#8217; uh?' );
+
 /**
  * Force HTML5
  *
@@ -7,6 +10,7 @@
  * @since 2.0.0
  */
 add_theme_support( 'genesis-html5' );
+add_theme_support( 'html5' );
 
 /**
  * Adds <meta> tags for mobile responsiveness.
@@ -15,10 +19,10 @@ add_theme_support( 'genesis-html5' );
  *
  * @since 2.0.0
  */
-// add_theme_support( 'genesis-responsive-viewport' );
+add_theme_support( 'genesis-responsive-viewport' );
 
 /**
- * Add support for custom backgrouns
+ * Add support for custom backgrounds
  *
  * @since 2.0.2
  */
@@ -29,7 +33,28 @@ add_theme_support( 'genesis-html5' );
  *
  * @since 2.0.1
  */
-// add_theme_support( 'genesis-footer-widgets', 3 );
+add_theme_support( 'genesis-footer-widgets', 3 );   							//SASS support for the number of footer widgets is set in _footer.scss using the $genesis-footer-areas variable
+
+//* Add support for structural wraps
+/*
+add_theme_support( 'genesis-structural-wraps', array(
+	'header',
+	'nav',
+	'subnav',
+	'inner',
+	'footer-widgets',
+	'footer'
+) );
+*/
+
+/**
+ * Declare WooCommerce support, using Genesis Connect for WooCommerce
+ *
+ * See: http://wordpress.org/plugins/genesis-connect-woocommerce/
+ *
+ * @since 2.0.6
+ */
+// add_theme_support( 'genesis-connect-woocommerce' );
 
 /**
  * Unregister default Genesis layouts
@@ -78,3 +103,5 @@ function bfg_remove_layout_meta_boxes() {
     remove_post_type_support( 'page', 'genesis-layouts' );							// Pages
 
 }
+
+

@@ -1,3 +1,8 @@
+.nav-primary {
+	@extend %remove-outer-gutter;		//Negative margins to bring block out to edge of .site-inner
+	background: $nav-primary-bg-colour;
+}
+
 .genesis-nav-menu {
 	clear: both;
 	margin: 0;
@@ -5,61 +10,120 @@
 	width: 100%;
 
 	.menu-item {
+		// display: block;
 		display: inline-block;
 		margin: 0;
 		padding: 0;
 		text-align: left;
+		
 
 		&:hover,
 		&:focus,
 		&:active {
+			position: static;
+			
+			@include breakpoint ($mama-bear-and-up) {
+				background: $nav-hover-item;
+			}
 
 			> .sub-menu {
 				left: auto;
 				opacity: 1;
 			}
 		}
+		
+		@include breakpoint($brother-bear) {
+			width: 100%;
+		}
+		
+		@include breakpoint($mama-bear-and-up) {
+			float: left;
+			
+			&:first-child {
+				margin-left: -$rhythm-height*1em;
+			}
+		}
+		
+	}
+	
+	.current-menu-item {
+		@include breakpoint($brother-bear) {
+			a {
+				color: darken($nav-primary-a-color, 15%);
+			}
+			
+			li a {
+				color:$nav-primary-a-color;
+			}
+			
+		}
+		
+		
+		@include breakpoint($mama-bear-and-up) {
+			background: $nav-current-item;
+		}
+		
 	}
 
 	a {
+		color: $nav-primary-a-color;
 		position: relative;
 		display: block;
+		
+		@include breakpoint($mama-bear-and-up) {
+			float: left;
+			padding-left: $rhythm-height*1em;
+			padding-right: $rhythm-height*1em;
+			@include padding-leader($rhythm-height);
+			@include padding-trailer($rhythm-height);
+		}
 	}
-
-	a:hover,
-	a:focus,
-	a:active,
-	.current-menu-item > a,
-	.sub-menu .current-menu-item > a:hover {
-
-	}
-
-	.sub-menu .current-menu-item > a {
-
-	}
-
-	> .menu-item > a {
-
-	}
-
+	
 	.sub-menu {
-		@include opacity(0);
-		@include transition(opacity .4s ease-in-out);
-		position: absolute;
-		left: -9999px;
-		z-index: 99;
-		margin: 0;
-		padding: 0;
-
-		a {
-			position: relative;
-		}
-
-		.sub-menu {
-
+		margin-left: $rhythm-spacing*4 + em;
+		padding-left: 0;
+		width: 100%;
+		display: block;
+		list-style: none;
+		@include padding-trailer($rhythm-spacing);
+		
+		@include breakpoint ($mama-bear-and-up) {
+		
+			@include opacity(0);
+			@include transition(opacity .4s ease-in-out);
+			position: absolute;
+			left: -9999px;
+			z-index: 99;
+			margin: 0;
+			padding: 0;
+			@include margin-leader($rhythm-height*3);
+			background: $sub-menu-bg;
+			width: 200px;
+			
+			li {
+				float: none;
+				
+				&:first-child {
+					margin-left: 0;
+				}
+			}
+		
+			a {
+				color: $sub-menu-a-color;
+				position: relative;
+				width: 200px;
+			}
+		
+			.sub-menu {
+				margin: 0 0 0 199px;
+				background: lighten($sub-menu-bg, 10%);
+				margin-bottom: -3px;
+			}
 		}
 	}
-
+	
+	
+	
 	> .first {
 
 		> a {
@@ -73,4 +137,84 @@
 
 		}
 	}
+	
+	.right {
+		color: $nav-primary-a-color;
+		float: right;
+		@include padding-leader($rhythm-height);
+		@include padding-trailer($rhythm-height);
+		display: inline-block;
+		list-style-type: none;
+		
+		> a {
+			display: inline;
+			padding: 0;
+		}
+		
+		@include breakpoint($brother-bear) {
+			display: none;
+		}
+
+	}
+	
+	> .rss > a {
+		margin-left: 48px;
+		margin-left: 4.8rem;
+	}
+
+	> .search {
+		padding: 14px 0 0;
+		padding: 1.4rem 0 0;
+	}
+	
+	.search-form {
+		width: 100%;
+	}
 }
+
+a#nav-toggle {
+	@include en-icon(list, $margin: 0.168*2em,  $top: -2px);
+}
+
+
+/*! responsive-nav.js v1.0.16 by @viljamis */
+@include breakpoint($brother-bear) {
+	
+	.js #menu-main-menu {
+	  clip: rect(0 0 0 0);
+	  max-height: 0;
+	  position: absolute;
+	  display: block;
+	  overflow: hidden;
+	  zoom: 1;
+	}
+	
+	#menu-main-menu.opened {
+	  max-height: 9999px;
+	}
+	
+	#nav-toggle {
+		color: #fff;
+		display: block;
+		@include padding-leader($rhythm-height);
+		@include padding-trailer($rhythm-height);
+	}
+
+}
+
+@include breakpoint ($mama-bear-and-up) {
+  .js #menu-main-menu {
+    position: relative;
+  }
+  .js #menu-main-menu.closed {
+    max-height: none;
+  }
+  #nav-toggle {
+    display: none;
+  }
+}
+
+
+
+
+
